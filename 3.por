@@ -1,0 +1,31 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		inteiro disci
+		inteiro min
+		real tl
+		inteiro caixa
+
+		disci = 8
+		min = 100
+		caixa = min/disci
+		tl = min%disci
+
+		escreva("ele ira dedicar ",caixa,"\n")
+		escreva("o tempo que sobrou é " , tl, "")
+		
+	}
+}
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 234; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */

@@ -1,0 +1,29 @@
+programa
+{
+    funcao inicio()
+    {
+        real t_a, v_l, t_D
+        
+        escreva("Digite o tamanho do arquivo para download (em MB): ")
+        leia(t_a)
+        escreva("Digite a velocidade da internet (em Mbps): ")
+        leia(v_l)
+
+        t_D = (t_a * 8) / v_l
+
+        t_D = t_D / 60
+
+        escreva("Tempo aproximado de download: ", t_D, " minutos\n")
+    }
+}
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 243; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */

@@ -1,0 +1,30 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		
+     real l1, l2, diagonal
+
+   escreva("Digite o comprimento da casa (em metros): ")
+   leia(l1)
+
+   escreva("Digite a largura da casa (em metros): ")
+   leia(l2)
+
+   diagonal = l1 * l1 + l2 * l2
+
+   escreva("A quantidade mínima de fio a ser comprada é: ", diagonal, " metros.")
+	}
+}
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 236; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */

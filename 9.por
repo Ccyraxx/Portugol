@@ -1,0 +1,38 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		real preco, lata, litro, quantidade, qtd_lata, qtd_tinta, valor, preco_litro
+
+		preco=480.00
+		lata=18
+		litro=3
+
+		escreva("me informe quantos metro quadrado sera pintado!\n")
+		leia(quantidade)
+
+		qtd_tinta=quantidade/litro
+		preco_litro=preco/lata
+		valor=preco_litro*qtd_tinta
+		qtd_lata=qtd_tinta/lata
+
+		se(qtd_lata < 1)
+		escreva("a quantidade de litro de tinta a serem compradas é: ",qtd_tinta,"\no preço total de tudo sera: ",valor,"")
+		
+		senao
+		escreva("a quantidade de lata de tinta a serem compradas é: ",qtd_lata,"\no preço total de tudo sera: ",valor,"")
+		
+	}
+}
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 363; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */

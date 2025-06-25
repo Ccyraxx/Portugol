@@ -1,0 +1,30 @@
+programa
+{
+	
+	funcao inicio()
+	{
+		inteiro cm, m
+		real sobra, tabua
+
+		escreva("escolha um desses numeros 3,4,5\n")
+		leia(m)
+
+		cm=45
+		sobra=cm%m
+		tabua=cm*m
+
+		escreva("sua quantidade de tabua é ",tabua, "/ sobrou ",sobra,"")
+		escreva("sobrou",sobra,"")
+	}
+}
+/* $$$ Portugol Studio $$$ 
+ * 
+ * Esta seção do arquivo guarda informações do Portugol Studio.
+ * Você pode apagá-la se estiver utilizando outro editor.
+ * 
+ * @POSICAO-CURSOR = 263; 
+ * @PONTOS-DE-PARADA = ;
+ * @SIMBOLOS-INSPECIONADOS = ;
+ * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
+ * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
+ */
