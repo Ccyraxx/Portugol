@@ -1,0 +1,1248 @@
+programa
+{
+	inclua biblioteca Texto-->t
+	inclua biblioteca Util-->u
+
+			cadeia resposta
+	
+	funcao inicio()
+	{
+		inteiro resultado
+		cadeia resposta
+		inteiro escolhe
+
+		escrevaparado("Seja Bem-vindo\n",0)
+		escrevaparado("A Lenda do Herói Silencioso\n",0)
+
+		escrevaparado("Em um reino antigo, a paz de mil anos foi quebrada quando uma maldição se espalhou pelas quatro Torres dos Elementos. Guardiões, uma vez benevolentes, foram corrompidos e agora espalham trevas e caos.\n",0)
+		escrevaparado("A profecia fala de um herói que virá para libertar o reino. Esse herói não é um guerreiro lendário, mas um aventureiro que deve provar seu valor superando os desafios das torres.\n O destino do reino está em suas mãos, e sua jornada será solitária, enfrentando cada guardião um a um.\n",0)
+		escrevaparado("A cada torre que você adentra, a névoa da maldição se torna mais densa. A cada batalha que vence, você sente a energia do lugar sendo restaurada. No final, após derrotar o último guardião e destruir a fonte da maldição,\n você se torna o herói da lenda.",0)
+		escrevaparado("A história é simples: escolha seu caminho, enfrente seus inimigos e supere os obstáculos. Seu sucesso depende de sua habilidade para atacar no momento certo e de sua sorte para desviar dos ataques,\n combinando a força bruta com a astúcia para alcançar a vitória final.",0)
+
+		
+		escrevaparado("\n\neescolhe um desses perssonagens!",0)
+		nomes()
+		escrevaparado("\nCaso queira uma descrição sobre eles digite o numero 0 \ncaso nao queira so escreve o numero do personagens!\n",0)
+		leia(escolhe)
+
+		se(escolhe==0){
+			personagens()
+			nomes()
+			escrevaparado("\nQual você era escolhe!\n",0)
+			leia(escolhe)
+		}
+		se(escolhe == 1){
+			batalhasbossshy()
+		}
+		se(escolhe == 2){
+			batalhasbossaizen()
+		}
+		se(escolhe == 3){
+			batalhasbossgelado()
+		}
+		se(escolhe == 4){
+			batalhasbossjhomsom()
+		}
+	}
+	funcao escrevaparado(cadeia texto, inteiro velocidade){
+		para(inteiro i=0; i < t.numero_caracteres(texto); i++){
+			escreva(t.obter_caracter(texto, i))
+			u.aguarde(velocidade)
+		}
+	}
+	funcao personagens(){
+
+		limpa()
+			inteiro hpshy=300, artshy= 35
+			inteiro hpaizen=650, artaizen=60
+			inteiro hpgelado=600,artgelado=65
+			inteiro hpjhomsom=650,artjhomsom=50
+		
+			escrevaparado("\nVocê escolheu a descrição aqui esta!\n",0)
+			escrevaparado("\nShy: ela tem "+hpshy+" de HP e "+artshy+" de dano ela nao possuir dano critico, mais ela tem uma habilidade de recuperar em 30%\n sua vida a cada boss derrotado!\n",0)
+			escrevaparado("\nAizen: ele tem "+hpaizen+" de hp e "+artaizen+" de dano ele tambem nao possuir dano critico mais ele tem uma abilidade \nChamado Kaioken ela permite que o aizen corta seu dano pela metado e soma a metado com o dano que ele tinha assim aumentando o dano do aizen\nA cada boss derrotado!",0)
+			escrevaparado("\ngelado: ele tem "+hpgelado+" de HP e "+artgelado+" de dano ele tambem nao possuir dano critico mais ele tem uma abilidade \nchamado colete protetor ele permite que todo o dano que voce levar e reduzido por 20% \n",0)
+			escrevaparado("\njhomsom: ele tem "+hpjhomsom+" de HP e "+artjhomsom+" de dano ele tambem nao possuir dano critico mais ele tem uma abilidade \nchamado Kaiokenplus ela permite que a cada boss derrotado o dano alumentar em 30%\n",0)
+	}
+	funcao nomes(){
+		escrevaparado("\n1-Shy\n2-aizen\n3-gelado\n4-jhomsom\n",0)
+	}
+	funcao batalhasbossshy(){
+
+			inteiro hpshy=300, artshy= 35
+			inteiro hpboss=150
+			inteiro artboss=35
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss>0){
+			limpa()
+
+			cadeia resposta
+				escrevaparado("\nVoce escolheu a Shy!",0)
+				escrevaparado("\n1-Ataque normal\n2-Fugir\n3-Ataque Especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nVoce escolheu ataque normal!\n",0)
+				hpboss=hpboss-artshy
+				escrevaparado("Ele ficou com "+hpboss+" de HP\n Agora ele esta preste a atacar voce\n Digite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("Voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nVoce errou o numero\n",0)
+					hpshy=hpshy-artboss
+					escrevaparado("Voce ficou com "+hpshy+" de HP",0)
+	}
+
+				se(hpshy<0){
+					perdedor()
+				}
+				se(hpboss<0){
+					escrevaparado("Voce derrotou o boss,Agore sera a vez do proximo boss!",0)
+					escrevaparado("tk",0)
+					reduzido=hpshy/100
+					soma=reduzido*30
+					hpshy=hpshy+soma
+					batalhasbossshy1(hpshy, artshy)
+				}		
+}
+			se(escolhe==2){
+				escrevaparado("\nVoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("Voce escolheu ataque especial",0)
+				escrevaparado("\nPra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("Voce acertou o HP do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 20% do dano original!",0)
+				hpboss=hpboss-artshy
+				reduzido=artboss/100
+				soma=reduzido*20
+				artboss=artboss-soma
+				hpshy=hpshy-artboss
+
+				
+			}senao{
+				escrevaparado("Voce errou!",0)
+				hpshy=hpshy-artboss
+			}
+				se(hpshy<0){
+					perdedor()
+				}
+				se(hpboss<0){
+					escrevaparado("Voce derrotou o boss,\nAgora sera a vez do proximo boss!",0)
+					escrevaparado("tk",0)
+					reduzido=hpshy/100
+					soma=reduzido*30
+					hpshy=hpshy+soma
+					batalhasbossshy1(hpshy, artshy)
+				}
+		}
+	}
+}		
+	funcao batalhasbossshy1(inteiro hpshy, inteiro artshy){
+
+			inteiro hpboss1=50
+			inteiro artboss1=100
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("Voce esta numa batalha!",0)
+
+		enquanto(hpboss1>0){
+
+				escrevaparado("\n1-Ataque normal\n2-Fugir\n3-Ataque Especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nVoce escolheu ataque normal!\n",0)
+				hpboss1=hpboss1-artshy
+				escrevaparado("Ele ficou com "+hpboss1+" de HP\n Agora ele esta preste a atacar voce\n Digite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("Voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nVoce errou o numero\n",0)
+					hpshy=hpshy-artboss1
+					escrevaparado("Voce ficou com "+hpshy+" de HP",0)
+	}
+
+				se(hpshy<0){
+					perdedor()
+				}
+				se(hpboss1<0){
+					escrevaparado("Voce derrotou o boss,Agore sera a vez do proximo boss!",0)
+					escrevaparado("tk",0)
+					reduzido=hpshy/100
+					soma=reduzido*30
+					hpshy=hpshy+soma
+					batalhasbossshy2(hpshy, artshy)
+				}		
+}
+			se(escolhe==2){
+				escrevaparado("\nVoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("Voce escolheu ataque especial",0)
+				escrevaparado("\nPra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("Voce acertou o HP do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 20% do dano original!",0)
+				hpboss1=hpboss1-artshy
+				reduzido=artboss1/100
+				soma=reduzido*20
+				artboss1=artboss1-soma
+				hpshy=hpshy-artboss1
+
+				
+			}senao{
+				escrevaparado("Voce errou!",0)
+				hpshy=hpshy-artboss1
+			}
+				se(hpshy<0){
+					perdedor()
+				}
+				se(hpboss1<0){
+					escrevaparado("Voce derrotou o boss,\nAgora sera a vez do proximo boss!",0)
+					escrevaparado("tk",0)
+					reduzido=hpshy/100
+					soma=reduzido*30
+					hpshy=hpshy+soma
+					batalhasbossshy2(hpshy, artshy)
+				}
+		}
+	}
+}	
+	funcao batalhasbossshy2(inteiro hpshy, inteiro artshy){
+
+			inteiro hpboss2=100
+			inteiro artboss2=40
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss2>0){
+
+				escrevaparado("\n1-Ataque normal\n2-Fugir\n3-Ataque Especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nVoce escolheu ataque normal!\n",0)
+				hpboss2=hpboss2-artshy
+				escrevaparado("Ele ficou com "+hpboss2+" de HP\n Agora ele esta preste a atacar voce\n Digite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("Voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nVoce errou o numero\n",0)
+					hpshy=hpshy-artboss2
+					escrevaparado("Voce ficou com "+hpshy+" de HP",0)
+	}
+
+				se(hpshy<0){
+					perdedor()
+				}
+				se(hpboss2<0){
+					escrevaparado("Voce derrotou o boss,Agore sera a vez do proximo boss!",0)
+					escrevaparado("tk",0)
+					reduzido=hpshy/100
+					soma=reduzido*30
+					hpshy=hpshy+soma
+					batalhasbossshy3(hpshy, artshy)
+				}		
+}
+			se(escolhe==2){
+				escrevaparado("\nVoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("Voce escolheu ataque especial",0)
+				escrevaparado("\nPra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("Voce acertou o HP do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 20% do dano original!",0)
+				hpboss2=hpboss2-artshy
+				reduzido=artboss2/100
+				soma=reduzido*20
+				artboss2=artboss2-soma
+				hpshy=hpshy-artboss2
+
+				
+			}senao{
+				escrevaparado("Voce errou!",0)
+				hpshy=hpshy-artboss2
+			}
+				se(hpshy<0){
+					perdedor()
+				}
+				se(hpboss2<0){
+					escrevaparado("Voce derrotou o boss,\nAgora sera a vez do proximo boss!",0)
+					escrevaparado("tk",0)
+					reduzido=hpshy/100
+					soma=reduzido*30
+					hpshy=hpshy+soma
+					batalhasbossshy3(hpshy, artshy)
+				}
+		}
+	} 
+}
+	funcao batalhasbossshy3(inteiro hpshy, inteiro artshy){
+
+			inteiro hpboss3=75
+			inteiro artboss3=35
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("Voce esta numa batalha!",0)
+
+		enquanto(hpboss3>0){
+
+				escrevaparado("\n1-Ataque normal\n2-Fugir\n3-Ataque Especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nVoce escolheu ataque normal!\n",0)
+				hpboss3=hpboss3-artshy
+				escrevaparado("Ele ficou com "+hpboss3+" de HP\n Agora ele esta preste a atacar voce\n Digite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("Voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nVoce errou o numero\n",0)
+					hpshy=hpshy-artboss3
+					escrevaparado("Voce ficou com "+hpshy+" de HP",0)
+	}
+
+				se(hpshy<0){
+					perdedor()
+				}
+				se(hpboss3<0){
+					escrevaparado("Voce derrotou o boss,Agore sera a vez do proximo boss!",0)
+					escrevaparado("tk",0)
+					vencedor()
+				}		
+}
+			se(escolhe==2){
+				escrevaparado("\nVoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("Voce escolheu ataque especial",0)
+				escrevaparado("\nPra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("Voce acertou o HP do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 20% do dano original!",0)
+				hpboss3=hpboss3-artshy
+				reduzido=artboss3/100
+				soma=reduzido*20
+				artboss3=artboss3-soma
+				hpshy=hpshy-artboss3
+
+				
+			}senao{
+				escrevaparado("Voce errou!",0)
+				hpshy=hpshy-artboss3
+			}
+				se(hpshy<0){
+					perdedor()
+					pare
+				}
+				se(hpboss3<0){
+					escrevaparado("Voce derrotou o boss,\nAgora sera a vez do proximo boss!",0)
+					escrevaparado("tk",0)
+					vencedor()
+					pare
+				}
+		}
+	}
+}	
+	funcao batalhasbossaizen(){
+
+			inteiro hpaizen=650, artaizen=60
+			inteiro hpboss=20
+			inteiro artboss=35
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss>0){
+
+			cadeia resposta
+				escrevaparado("\n1-ataque noma1\n2-fugir\n3-ataque especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nvoce escolheu ataque normal!\n",0)
+				hpboss=hpboss-artaizen
+				escrevaparado("ele ficou com "+hpboss+" de hp\n agora ele esta preste a atacar voce\ndigite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nvoce errou o numero\n",0)
+					hpaizen=hpaizen-artboss
+					escrevaparado("voce ficou com "+hpaizen+" de hp, e com "+artaizen+" de dano",0)
+	}
+
+				se(hpaizen<0){
+					perdedor()
+				}
+				se(hpboss<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("tk",0)
+					reduzido=artaizen/100
+					soma=reduzido*10
+					artaizen=artaizen+soma
+					escreva(artaizen)
+					batalhasbossaizen1(hpaizen, artaizen)
+				}			
+}
+			se(escolhe==2){
+				escrevaparado("\nvoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("voce escolheu ataque especial",0)
+				escrevaparado("\npra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("voce acertou o hp do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 30% do dano original!",0)
+				hpboss=hpboss/2
+				reduzido=artboss/100
+				soma=reduzido*30
+				artboss=artboss-soma
+				
+			}senao{
+				escrevaparado("voce errou!",0)
+				hpaizen=hpaizen-artboss
+			}
+				se(hpaizen<0){
+					perdedor()
+				}
+				se(hpboss<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("tk",0)
+					reduzido=artaizen/100
+					soma=reduzido*10
+					artaizen=artaizen+soma
+					escreva(artaizen)
+					batalhasbossaizen1(hpaizen, artaizen)
+				
+				}
+			}
+	}
+}		
+	funcao batalhasbossaizen1(inteiro hpaizen, inteiro artaizen){
+
+			inteiro hpboss1=50
+			inteiro artboss1=100
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss1>0){
+
+			cadeia resposta
+				escrevaparado("\n1-ataque noma1\n2-fugir\n3-ataque especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nvoce escolheu ataque normal!\n",0)
+				hpboss1=hpboss1-artaizen
+				escrevaparado("ele ficou com "+hpboss1+" de hp\n agora ele esta preste a atacar voce\ndigite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+	
+			se(num==sorte){
+				escrevaparado("voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nvoce errou o numero\n",0)
+					hpaizen=hpaizen-artboss1
+					escrevaparado("voce ficou com "+hpaizen+" de hp",0)
+	}
+					se(hpaizen<0){
+					perdedor()
+				}
+				se(hpboss1<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("es",0)
+					reduzido=artaizen/100
+					soma=reduzido*10
+					artaizen=artaizen+soma
+					escreva(artaizen)
+					batalhasbossaizen2(hpaizen, artaizen)
+				}
+}
+			se(escolhe==2){
+				escrevaparado("\nvoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("voce escolheu ataque especial",0)
+				escrevaparado("\npra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("voce acertou o hp do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 30% do dano original!",0)
+				hpboss1=hpboss1/2
+				reduzido=artboss1/100
+				soma=reduzido*30
+				artboss1=artboss1-soma
+
+				
+			}
+				se(hpaizen<0){
+					perdedor()
+				}
+				se(hpboss1<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("es",0)
+					reduzido=artaizen/100
+					soma=reduzido*10
+					artaizen=artaizen+soma
+					escreva(artaizen)
+					batalhasbossaizen2(hpaizen, artaizen)
+				}
+		}
+	}
+}	
+	funcao batalhasbossaizen2(inteiro hpaizen, inteiro artaizen){
+
+			inteiro hpboss2=100
+			inteiro artboss2=40
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss2>0){
+
+			cadeia resposta
+				escrevaparado("\n1-ataque noma1\n2-fugir\n3-ataque especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nvoce escolheu ataque normal!\n",0)
+				hpboss2=hpboss2-artaizen
+				escrevaparado("ele ficou com "+hpboss2+" de hp\n agora ele esta preste a atacar voce\ndigite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nvoce errou o numero\n",0)
+					hpaizen=hpaizen-artboss2
+					escrevaparado("voce ficou com "+hpaizen+" de hp",0)
+	}
+				se(hpaizen<0){
+					perdedor()
+				}
+				se(hpboss2<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("gx",0)
+					reduzido=artaizen/100
+					soma=reduzido*10
+					artaizen=artaizen+soma
+					escreva(artaizen)
+					batalhasbossaizen3(hpaizen, artaizen)
+				}
+					
+}
+			se(escolhe==2){
+				escrevaparado("\nvoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("voce escolheu ataque especial",0)
+				escrevaparado("\npra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("voce acertou o hp do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 30% do dano original!",0)
+				hpboss2=hpboss2/2
+				reduzido=artboss2/100
+				soma=reduzido*30
+				artboss2=artboss2-soma
+
+				
+			}
+				se(hpaizen<0){
+					perdedor()
+				}
+				se(hpboss2<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("gx",0)
+					reduzido=artaizen/100
+					soma=reduzido*10
+					artaizen=artaizen+soma
+					escreva(artaizen)
+					batalhasbossaizen3(hpaizen, artaizen)
+				}
+		}
+	}
+}
+	funcao batalhasbossaizen3(inteiro hpaizen, inteiro artaizen){
+
+			inteiro hpboss3=75
+			inteiro artboss3=35
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss3>0){
+
+			cadeia resposta
+				escrevaparado("\n1-ataque noma1\n2-fugir\n3-ataque especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nvoce escolheu ataque normal!\n",0)
+				hpboss3=hpboss3-artaizen
+				escrevaparado("ele ficou com "+hpboss3+" de hp\n agora ele esta preste a atacar voce\ndigite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nvoce errou o numero\n",0)
+					hpaizen=hpaizen-artboss3
+					escrevaparado("voce ficou com "+hpaizen+" de hp",0)
+	}
+				se(hpaizen<0){
+					perdedor()
+				}
+				se(hpboss3<0){
+					vencedor()
+				}			
+}
+			se(escolhe==2){
+				escrevaparado("\nvoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("voce escolheu ataque especial",0)
+				escrevaparado("\npra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("voce acertou o hp do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 30% do dano original!",0)
+				hpboss3=hpboss3/2
+				reduzido=artboss3/100
+				soma=reduzido*30
+				artboss3=artboss3-soma
+
+				
+			}senao{
+				escrevaparado("voce errou!",0)
+				hpaizen=hpaizen-artboss3
+			}
+				se(hpaizen<0){
+					perdedor()
+					pare
+				}
+				se(hpboss3<0){
+					vencedor()
+					pare
+				}
+		}
+	}
+}	
+	funcao batalhasbossgelado(){
+
+			inteiro hpgelado=600,artgelado=65
+			inteiro hpboss=150
+			inteiro artboss=35
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss>0){
+
+			cadeia resposta
+				escrevaparado("\n1-ataque noma1\n2-fugir\n3-ataque especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nvoce escolheu ataque normal!\n",0)
+				hpboss=hpboss-artgelado
+				escrevaparado("ele ficou com "+hpboss+" de hp\n agora ele esta preste a atacar voce\ndigite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nvoce errou o numero\n",0)
+					reduzido=artboss/100
+					soma=reduzido*20
+					artboss=artboss-soma
+					hpgelado=hpgelado-artboss
+					escrevaparado("voce ficou com "+hpgelado+" de hp",0)
+	}
+
+				se(hpgelado<0){
+					perdedor()
+				}
+				se(hpboss<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("tk",0)
+					batalhasbossgelado1(hpgelado, artgelado)
+				}			
+}
+			se(escolhe==2){
+				escrevaparado("\nvoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("voce escolheu ataque especial",0)
+				escrevaparado("\npra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("voce acertou o hp do boss!\n Seu dano sera elevado em 20%",0)
+				reduzido=artgelado/100
+				soma=reduzido*20
+				artgelado=artgelado+soma
+				hpboss=hpboss-artgelado
+
+				
+			}senao{
+				escrevaparado("voce errou!",0)
+				hpgelado=hpgelado-artboss
+			}
+				se(hpgelado<0){
+					perdedor()
+				}
+				se(hpboss<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("tk",0)
+					batalhasbossgelado1(hpgelado, artgelado)
+				}
+		}
+	}
+}		
+	funcao batalhasbossgelado1(inteiro hpgelado, inteiro artgelado){
+
+			inteiro hpboss1=50
+			inteiro artboss1=100
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss1>0){
+
+			cadeia resposta
+				escrevaparado("\n1-ataque noma1\n2-fugir\n3-ataque especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nvoce escolheu ataque normal!\n",0)
+				hpboss1=hpboss1-artgelado
+				escrevaparado("ele ficou com "+hpboss1+" de hp\n agora ele esta preste a atacar voce\ndigite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+
+			se(num==sorte){
+				escrevaparado("voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nvoce errou o numero\n",0)
+					reduzido=artboss1/100
+					soma=reduzido*20
+					artboss1=artboss1-soma
+					escrevaparado("voce ficou com "+hpgelado+" de hp",0)
+				}
+					se(hpgelado<0){
+					perdedor()
+				}
+				se(hpboss1<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("es",0)
+					batalhasbossgelado2(hpgelado, artgelado)
+				}
+}
+			se(escolhe==2){
+				escrevaparado("\nvoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("voce escolheu ataque especial",0)
+				escrevaparado("\npra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("voce acertou o hp do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 20% do dano original!",0)
+				reduzido=artgelado/100
+				soma=reduzido*20
+				artgelado=artgelado+soma
+				hpboss1=hpboss1-artgelado
+				hpgelado=hpgelado-artboss1
+
+				
+			}
+				se(hpgelado<0){
+					perdedor()
+				}
+				se(hpboss1<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("es",0)
+					batalhasbossgelado2(hpgelado, artgelado)
+				}
+		}
+	}
+}	
+	funcao batalhasbossgelado2(inteiro hpgelado, inteiro artgelado){
+
+			inteiro hpboss2=100
+			inteiro artboss2=40
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss2>0){
+
+			cadeia resposta
+				escrevaparado("\n1-ataque noma1\n2-fugir\n3-ataque especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nvoce escolheu ataque normal!\n",0)
+				hpboss2=hpboss2-artgelado
+				escrevaparado("ele ficou com "+hpboss2+" de hp\n agora ele esta preste a atacar voce\ndigite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nvoce errou o numero\n",0)
+					reduzido=artboss2/100
+					soma=reduzido*20
+					artboss2=artboss2-soma
+					hpgelado=hpgelado-artboss2
+					escrevaparado("voce ficou com "+hpgelado+" de hp",0)
+	}
+				se(hpgelado<0){
+					perdedor()
+				}
+				se(hpboss2<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("gx",0)
+					batalhasbossgelado3(hpgelado, artgelado)
+				}
+					
+}
+			se(escolhe==2){
+				escrevaparado("\nvoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("voce escolheu ataque especial",0)
+				escrevaparado("\npra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("voce acertou o hp do boss sera reduzido em 20%!",0)
+				reduzido=artgelado/100
+				soma=reduzido*20
+				artgelado=artgelado-soma
+				hpboss2=hpboss2-artgelado
+
+				
+			}senao{
+				escrevaparado("Voce errou",0)
+			}
+				se(hpgelado<0){
+					perdedor()
+				}
+				se(hpboss2<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("gx",0)
+					batalhasbossgelado3(hpgelado, artgelado)
+				}
+		}
+	}
+}
+	funcao batalhasbossgelado3(inteiro hpgelado, inteiro artgelado){
+
+			inteiro hpboss3=75
+			inteiro artboss3=35
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss3>0){
+
+			cadeia resposta
+				escrevaparado("\n1-ataque noma1\n2-fugir\n3-ataque especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nvoce escolheu ataque normal!\n",0)
+				hpboss3=hpboss3-artgelado
+				escrevaparado("ele ficou com "+hpboss3+" de hp\n agora ele esta preste a atacar voce\ndigite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nvoce errou o numero\n",0)
+					hpgelado=hpgelado-artboss3
+					escrevaparado("voce ficou com "+hpgelado+" de hp",0)
+	}
+				se(hpgelado<0){
+					perdedor()
+				}
+				se(hpboss3<0){
+					vencedor()
+				}			
+}
+			se(escolhe==2){
+				escrevaparado("\nvoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("voce escolheu ataque especial",0)
+				escrevaparado("\npra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("voce acertou o hp do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 30% do dano original!",0)
+				hpboss3=hpboss3/2
+				reduzido=artboss3/100
+				soma=reduzido*30
+				artboss3=artboss3-soma
+
+				
+			}senao{
+				escrevaparado("voce errou!",0)
+				hpgelado=hpgelado-artboss3
+			}
+				se(hpgelado<0){
+					perdedor()
+					pare
+				}
+				se(hpboss3<0){
+					vencedor()
+					pare
+				}
+		}
+	}
+}
+	funcao batalhasbossjhomsom(){
+
+			inteiro hpjhomsom=650,artjhomsom=50
+			inteiro hpboss=150
+			inteiro artboss=35
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss>0){
+
+			cadeia resposta
+				escrevaparado("\n1-ataque noma1\n2-fugir\n3-ataque especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nvoce escolheu ataque normal!\n",0)
+				hpboss=hpboss-artjhomsom
+				escrevaparado("ele ficou com "+hpboss+" de hp\n agora ele esta preste a atacar voce\ndigite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nvoce errou o numero\n",0)
+					hpjhomsom=hpjhomsom-artboss
+					escrevaparado("voce ficou com "+hpjhomsom+" de hp",0)
+	}
+
+				se(hpjhomsom<0){
+					perdedor()
+				}
+				se(hpboss<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("tk",0)
+					reduzido=artjhomsom/100
+					soma=reduzido*30
+					artjhomsom=artjhomsom+soma
+					batalhasbossjhomsom1(hpjhomsom, artjhomsom)
+				}			
+}
+			se(escolhe==2){
+				escrevaparado("\nvoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("voce escolheu ataque especial",0)
+				escrevaparado("\npra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("voce acertou o hp do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 30% do dano original!",0)
+				hpboss=hpboss/2
+				reduzido=artboss/100
+				soma=reduzido*30
+				artboss=artboss-soma
+
+				
+			}senao{
+				escrevaparado("voce errou!",0)
+				hpjhomsom=hpjhomsom-artboss
+			}
+				se(hpjhomsom<0){
+					perdedor()
+				}
+				se(hpboss<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("tk",0)
+					reduzido=artjhomsom/100
+					soma=reduzido*30
+					artjhomsom=artjhomsom+soma
+					batalhasbossjhomsom1(hpjhomsom, artjhomsom)
+				}
+		}
+	}
+}		
+	funcao batalhasbossjhomsom1(inteiro hpjhomsom, inteiro artjhomsom){
+
+			inteiro hpboss1=50
+			inteiro artboss1=100
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss1>0){
+
+			cadeia resposta
+				escrevaparado("\n1-ataque noma1\n2-fugir\n3-ataque especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nvoce escolheu ataque normal!\n",0)
+				hpboss1=hpboss1-artjhomsom
+				escrevaparado("ele ficou com "+hpboss1+" de hp\n agora ele esta preste a atacar voce\ndigite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+
+			se(num==sorte){
+				escrevaparado("voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nvoce errou o numero\n",0)
+					hpjhomsom=hpjhomsom-artboss1
+					escrevaparado("voce ficou com "+hpjhomsom+" de hp",0)
+	}
+					se(hpjhomsom<0){
+					perdedor()
+				}
+				se(hpboss1<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("es",0)
+					reduzido=artjhomsom/100
+					soma=reduzido*30
+					artjhomsom=artjhomsom+soma
+					batalhasbossjhomsom2(hpjhomsom, artjhomsom)
+				}
+}
+			se(escolhe==2){
+				escrevaparado("\nvoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("voce escolheu ataque especial",0)
+				escrevaparado("\npra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("voce acertou o hp do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 30% do dano original!",0)
+				hpboss1=hpboss1/2
+				reduzido=artboss1/100
+				soma=reduzido*30
+				artboss1=artboss1-soma
+
+				
+			}
+				se(hpjhomsom<0){
+					perdedor()
+				}
+				se(hpboss1<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("es",0)
+					reduzido=artjhomsom/100
+					soma=reduzido*30
+					artjhomsom=artjhomsom+soma
+					batalhasbossjhomsom2(hpjhomsom, artjhomsom)
+				}
+		}
+	}
+}	
+	funcao batalhasbossjhomsom2(inteiro hpjhomsom, inteiro artjhomsom){
+
+			inteiro hpboss2=100
+			inteiro artboss2=40
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss2>0){
+
+			cadeia resposta
+				escrevaparado("\n1-ataque noma1\n2-fugir\n3-ataque especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nvoce escolheu ataque normal!\n",0)
+				hpboss2=hpboss2-artjhomsom
+				escrevaparado("ele ficou com "+hpboss2+" de hp\n agora ele esta preste a atacar voce\ndigite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nvoce errou o numero\n",0)
+					hpjhomsom=hpjhomsom-artboss2
+					escrevaparado("voce ficou com "+hpjhomsom+" de hp",0)
+	}
+				se(hpjhomsom<0){
+					perdedor()
+				}
+				se(hpboss2<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("gx",0)
+					reduzido=artjhomsom/100
+					soma=reduzido*30
+					artjhomsom=artjhomsom+soma
+					batalhasbossjhomsom3(hpjhomsom, artjhomsom)
+				}
+					
+}
+			se(escolhe==2){
+				escrevaparado("\nvoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("voce escolheu ataque especial",0)
+				escrevaparado("\npra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("voce acertou o hp do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 30% do dano original!",0)
+				hpboss2=hpboss2/2
+				reduzido=artboss2/100
+				soma=reduzido*30
+				artboss2=artboss2-soma
+
+				
+			}
+				se(hpjhomsom<0){
+					perdedor()
+				}
+				se(hpboss2<0){
+					escrevaparado("voce derrotou o boss,agr sera a vez do proximo!",0)
+					escrevaparado("gx",0)
+					reduzido=artjhomsom/100
+					soma=reduzido*30
+					artjhomsom=artjhomsom+soma
+					batalhasbossjhomsom3(hpjhomsom, artjhomsom)
+				}
+		}
+	}
+}
+	funcao batalhasbossjhomsom3(inteiro hpjhomsom, inteiro artjhomsom){
+
+			inteiro hpboss3=75
+			inteiro artboss3=35
+			inteiro escolhe, num, sorte, reduzido, soma
+
+				escrevaparado("voce esta numa batalha!",0)
+
+		enquanto(hpboss3>0){
+
+			cadeia resposta
+				escrevaparado("\n1-ataque noma1\n2-fugir\n3-ataque especial\n",0)
+				leia(escolhe)
+				
+			se(escolhe==1){
+				escrevaparado("\nvoce escolheu ataque normal!\n",0)
+				hpboss3=hpboss3-artjhomsom
+				escrevaparado("ele ficou com "+hpboss3+" de hp\n agora ele esta preste a atacar voce\ndigite um numero de 1 a 5 pra nao levar dano dele!",0)
+				leia(num)
+				sorte=u.sorteia(1, 5)
+			se(num==sorte){
+				escrevaparado("voce acertou; ele errou o ataque sua vez agora!",0)
+				}senao{
+					escrevaparado("\nvoce errou o numero\n",0)
+					hpjhomsom=hpjhomsom-artboss3
+					escrevaparado("voce ficou com "+hpjhomsom+" de hp",0)
+	}
+				se(hpjhomsom<0){
+					perdedor()
+				}
+				se(hpboss3<0){
+					vencedor()
+				}			
+}
+			se(escolhe==2){
+				escrevaparado("\nvoce escolheu fugir!",0)
+				pare
+}
+			se(escolhe==3){
+				escrevaparado("voce escolheu ataque especial",0)
+				escrevaparado("\npra usar ele voce precisa acertar um numero de 1 a 10\n",0)
+				
+				leia(num)
+				sorte=u.sorteia(1,10)
+			se(num==sorte){
+				escrevaparado("voce acertou o hp do boss sera reduzido pela metade, e o dano dele vai ser reduzido por 30% do dano original!",0)
+				hpboss3=hpboss3/2
+				reduzido=artboss3/100
+				soma=reduzido*30
+				artboss3=artboss3-soma
+
+				
+			}senao{
+				escrevaparado("voce errou!",0)
+				hpjhomsom=hpjhomsom-artboss3
+			}
+				se(hpjhomsom<0){
+					perdedor()
+					pare
+				}
+				se(hpboss3<0){
+					vencedor()
+					pare
+				}
+		}
+	}
+}
+		funcao vencedor(){
+			escrevaparado("(2×3 2−12)÷ 4",0)
+			leia(resposta)
+
+			se(resposta == "neymar"){
+
+				escrevaparado("🅥🅞🅒🅔 🅖🅐🅝🅗🅞🅤, 🅕🅘🅜",0)
+			}senao{
+				escrevaparado("🅥🅞🅒🅔 🅔🅡🅡🅞🅤, 🅚🅚🅚🅚🅚🅚, 🅕🅘🅜",0)
+			}
+			credtos()
+}
+		funcao perdedor(){
+			escrevaparado("Voce perdeu!\nahkahkahkahkahkahk",0)
+			credtos()
+		}
+		funcao credtos(){
+			escrevaparado("\n\n\n\n\nCODIGO:Carlos Eduardo! 90%\nHISTORIA:Luccas! CODIGO! 5%\nkAYO:FUNÇAO! CODIGO! 5%\nRaylan: apresentaçao!",0)
+			
+		}
+}
